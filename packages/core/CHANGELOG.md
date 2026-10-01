@@ -1,5 +1,15 @@
 # @mastra/core
 
+## 1.75.0-alpha.0
+
+### Minor Changes
+
+- Added the per-provider object form to the `ObservationalMemoryActivationTTL` type, so `activateAfterIdle` accepts values like `{ default: 'auto', anthropic: '1h' }`. New `ObservationalMemoryActivationTTLValue` and `ObservationalMemoryActivationTTLByProvider` types are exported. ([#25727](https://github.com/mastra-ai/mastra/pull/25727))
+
+### Patch Changes
+
+- Update provider registry and model documentation with latest models and providers ([`b54fda3`](https://github.com/mastra-ai/mastra/commit/b54fda3f30330d65e52bf34802f0aa4035e30ef8))
+
 ## 1.74.0
 
 ### Minor Changes

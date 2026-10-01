@@ -1,5 +1,35 @@
 # @mastra/memory
 
+## 1.36.0-alpha.0
+
+### Minor Changes
+
+- Added per-provider idle activation TTLs to observational memory. Pass an object to `activateAfterIdle` to set a TTL for specific providers and a `default` for the rest. Use this when your requests set a prompt cache TTL that `'auto'` can't detect, such as Anthropic's per-message `cacheControl: { ttl: '1h' }`. ([#25727](https://github.com/mastra-ai/mastra/pull/25727))
+
+  **Before**
+
+  ```ts
+  // 'auto' uses 5 minutes for Anthropic: after 5 idle minutes OM activates and rewrites the prompt, invalidating a 1-hour cache that is still warm
+  observationalMemory: {
+    activateAfterIdle: 'auto',
+  }
+  ```
+
+  **After**
+
+  ```ts
+  observationalMemory: {
+    activateAfterIdle: { default: 'auto', anthropic: '1h' },
+  }
+  ```
+
+  Keys match the model's provider before the first `.` (so `anthropic` matches `anthropic.messages`), case-insensitively. Each value takes the same forms as before: milliseconds, a duration string, `'auto'`, or `false`. Existing single-value settings behave exactly as before.
+
+### Patch Changes
+
+- Updated dependencies [[`b54fda3`](https://github.com/mastra-ai/mastra/commit/b54fda3f30330d65e52bf34802f0aa4035e30ef8), [`718207d`](https://github.com/mastra-ai/mastra/commit/718207d5cc37d625bea6ff290fe25a949d3594f6)]:
+  - @mastra/core@1.75.0-alpha.0
+
 ## 1.35.0
 
 ### Minor Changes

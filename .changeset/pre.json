@@ -191,5 +191,10 @@
     "@mastra/s3": "0.6.3",
     "@mastra/vercel": "1.6.0"
   },
-  "changesets": []
+  "changesets": [
+    "automated-provider-registry-20261001-182907",
+    "salty-bikes-add",
+    "sweet-flies-dig",
+    "tender-aliens-melt"
+  ]
 }
